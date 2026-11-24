@@ -1,6 +1,13 @@
 #include <stdio.h>
-int main () {
+#include <unistd.h>
+
+int main() {
     // [v1.1] print and log current working dir.
-    // please develop this function.
-   return 0;
+    char pwd[1024];
+    FILE *f = fopen("pwd-log.log", "w");
+    getcwd(pwd, sizeof(pwd));
+    printf("print working dir: %s\n", pwd);
+    fprintf(f, "%s\n", pwd);
+    fclose(f);
+    return 0;
 }
